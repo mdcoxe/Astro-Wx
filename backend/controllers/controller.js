@@ -30,7 +30,7 @@ wx.put('/:id', async (req, res) => {
             req.body,
             { new: true }
         );
-        res.status(200).json(updatedZip);
+        res.status(200).json(updateZip);
     } catch (error) {
         res.status(400).json(error);
     }
