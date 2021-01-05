@@ -5,11 +5,16 @@ const app = express();
 const PORT = process.env.PORT || 3009;
 const MONGOURI = process.env.MONGODB_URI;
 const cors = require('cors');
-const controller = require('./controllers/controller');
+
 
 //Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+//Use routes from the controllers folder
+const controller = require('./controllers/controller');
+app.use('/wx', controller);
 
 //Database connection
 mongoose.connect(MONGOURI, {
@@ -26,8 +31,6 @@ mongoose.connection.on('disconnected', () => {
 mongoose.connection.once('open', () => {
     console.log('Connected to MongoDB');
 });
-
-app.use('/wx', controller);
 
 app.listen(PORT, () => {
     console.log('I can hear you on', PORT);
