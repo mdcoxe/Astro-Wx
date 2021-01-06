@@ -1,61 +1,38 @@
+//express router to route our local weather endpoints
 const express = require('express');
 const wx = express.Router();
-const AstroWx = require('../models/models');
+const Weather = require('./weather');
 
-//index
-wx.get('/', async (req, res) => {
-    try{
-        const foundZip = await AstroWx.find({});
-        res.status(200).json(foundZip)
-    }catch (error) {
-        res.status(400).json(error)
-    }
+wx.get('/weather', async (req, res) => {
+    let weather = new Weather();
+    let weatherData = await weather.getWxData(99504, 'us');
+    res.header('Content-Type', 'application/json');
+    res.send(JSON.stringify(weatherData, null, 4));
 });
-
-//delete
-wx.delete('/:id', async(req, res) => {
-    try {
-        const deleteZip = await AstroWx.findByIdAndRemove(req.params.id);
-        res.status(200).json(deleteZip)
-    } catch (error) {
-        res.status(400).json(error)
-    }
+//Get request dynamically 
+wx.post('/weather', async (req, res) => {
+    const {zipCode, tempMetric} = req.body;
+    let weather = new Weather();
+    let weatherData = await weather.getWxData(zipCode, tempMetric);
+    res.header('Content-Type', 'application/json');
+    res.send(JSON.stringify(weatherData, null, 4));
 });
-
-//update
-wx.put('/:id', async (req, res) => {
-    try {
-        const updateZip = await AstroWx.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            { new: true }
-        );
-        res.status(200).json(updateZip);
-    } catch (error) {
-        res.status(400).json(error);
-    }
+//get weather data from api save to db then return data back
+wx.post('/wxmongo', async (req, res) => {
+    const {zipCode, tempMetric} = req.body;
+    let weather = new Weather();
+    let weatherData = await weather.getWxData(zipCode, tempMetric);
+    await weather.saveWxData(zipCode, weatherData);
+    res.header('Content-Type', 'application/json');
+    res.send(JSON.stringify(weatherData, null, 4));
 });
-
-
-//CREATE
-wx.post('/', async (req, res) =>{
-    try{
-        const createdZip = await AstroWx.create(req.body);
-        res.status(200).json(createdZip);
-    } catch (error){
-        res.status(400).json(error);
-    }
-})
-
-
-//show
-wx.get('/:id', async (req, res) => {
-    try{
-        const findZip = await AstroWx.findById(req.params.id);
-        res.status(200).json(findZip);
-    } catch (error) {
-        res.status(400).json(error)
-    }
+//Get saved data from db 
+wx.get('/wxmongo', async (req, res) => {
+    const {zipCode} = req.query;
+    let weather = new Weather();
+    let weatherData = await weather.getWxDataMongo(zipCode);
+    res.header('Content-Type', 'application/json');
+    res.send(JSON.stringify(weatherData, null, 4));
 });
 
 module.exports = wx;

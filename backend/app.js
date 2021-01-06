@@ -15,6 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 //Use routes from the controllers folder
 const controller = require('./controllers/controller');
 app.use('/wx', controller);
+const weather = require('./controllers/weather');
+app.use('/weather', weather);
 
 //Database connection
 mongoose.connect(MONGOURI, {

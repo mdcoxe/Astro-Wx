@@ -7,8 +7,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <PullAPI />
       <Header />
+      <PullAPI />
       <LocalWeather />
       <SpaceWeather />
     </div>
