@@ -1,0 +1,12 @@
+.wx-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    width: 100%;
+    color: #2b235a;
+    
+}
+.weather-form span{
+    color: #2b235a;
+}

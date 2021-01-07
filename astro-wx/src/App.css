@@ -1,0 +1,23 @@
+@font-face{
+    font-family: 'earth-orbit';
+    src: url('./resources/EarthOrbiter.otf')
+}
+*{
+    color: #8fe0ff;   
+}
+h1, h2{
+    font-family: 'earth-orbit', Arial, Helvetica, sans-serif;
+    
+}
+.App{
+    position:absolute;
+    left: 0;
+    top: 0;
+    margin:0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    background-color: #75b4e3;
+}

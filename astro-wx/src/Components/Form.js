@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, Button, Row, Col, ButtonGroup, ToggleButton } from 'react-bootstrap';
 import axios from 'axios';
 import { connect } from 'react-redux';
-
+import '../Stylesheets/form.css';
 
 const WxForm = (props) => {
     const [zipCode, setZipCode] = useState(99504);
@@ -49,7 +49,7 @@ const WxForm = (props) => {
                                     checked={tempMetric === "metric"}
                                     onChange={handleTempChange}
                                 >
-                                    Celsius (°C)
+                                    <span>Celsius (°C)</span>
                                 </ToggleButton>
                                 <ToggleButton
                                     key={"F"}
@@ -60,7 +60,7 @@ const WxForm = (props) => {
                                     checked={tempMetric === "imperial"}
                                     onChange={handleTempChange}
                                 >
-                                    Fahrenheit (°F)
+                                    <span>Fahrenheit (°F)</span>
                                 </ToggleButton>
                             </ButtonGroup>
                         </Col>

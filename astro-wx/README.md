@@ -1,3 +1,10 @@
+
+
+Color-Palette
+https://www.color-hex.com/color-palette/54458
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

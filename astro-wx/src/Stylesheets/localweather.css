@@ -1,0 +1,14 @@
+.local-wx{
+    
+    margin: 0 15px 15px 15px;
+
+    padding: 15px;
+}
+.local-wx h2{
+    text-align: center;
+    color: #2b235a;
+    
+}
+.local-wx span{
+    color: #2b235a;
+}

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import LocalWeather from './LocalWeather';
 import SpaceWeather from './SpaceWeather';
-
-const WxPanels = (props) => {
+import '../Stylesheets/panel.css';
+const Panels = (props) => {
     
     return  <div className="wx-panels">
                 <LocalWeather />
@@ -11,4 +11,4 @@ const WxPanels = (props) => {
             </div>
 }
 
-export default WxPanels;
+export default Panels;

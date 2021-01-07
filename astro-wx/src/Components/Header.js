@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../Stylesheets/header.css';
 
 const Header = (props) => {
     return  <div className="header">

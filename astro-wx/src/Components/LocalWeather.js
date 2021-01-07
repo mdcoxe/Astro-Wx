@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import '../Stylesheets/localweather.css';
 const LocalWeather = () => {
 
 
@@ -32,29 +32,23 @@ const LocalWeather = () => {
 //     };
   
     return (
-<section className="weather-info">
-  <h3 className="city-name">City Name</h3>
+        <div className="local-wx">
+            <h2 className="city-name">City Name</h2>
 
-  <section className="overcast">
-      <img src="" className="overcast-img" alt=""/>
-      <span className="overcast-description">Weather Description</span>
-  </section>
-
-  <hr/>
-
-  <section className="current-weather">
-      <span className="humidity">Humidity: X%</span>
-      <span className="curr-temp">Temp: X°F</span>
-      <span className="feels-like">Feels like: X°F</span>
-  </section>
-
-  <hr/>
-
-  <section className="temps">
-      <span className="min-temp">Low: X°F</span>
-      <span className="max-temp">High: X°F</span>
-  </section>
-</section>
+            <div className="overcast">
+                <img src="" className="overcast-img" alt=""/>
+                <span className="overcast-description">Weather Description</span>
+            </div>
+            <div className="current-weather">
+                <span className="humidity">Humidity: X%</span>
+                <span className="curr-temp">Temp: X°F</span>
+                <span className="feels-like">Feels like: X°F</span>
+            </div>
+            <div className="temps">
+                <span className="min-temp">Low: X°F</span>
+                <span className="max-temp">High: X°F</span>
+            </div>
+        </div>
 );
 
 

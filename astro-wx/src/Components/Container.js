@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import LocalWeather from './LocalWeather';
-import WxForm from './WxForm';
-import WxPanels from './WxPanels';
+import '../Stylesheets/container.css';
+import WxForm from './Form';
+import Panels from './Panels';
 
 
 const Container = (props) => {
@@ -9,7 +9,7 @@ const Container = (props) => {
 
     return  <div className="wx-container">
                 <WxForm />
-                <WxPanels weatherData={weatherData} />
+                <Panels weatherData={weatherData} />
             </div>
 }
 

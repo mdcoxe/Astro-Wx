@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import '../Stylesheets/kpchart.css';
 const KPChart = (props) => {
     
     return  <div className="kp-container">
