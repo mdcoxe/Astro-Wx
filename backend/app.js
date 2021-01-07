@@ -14,9 +14,10 @@ app.use(express.urlencoded({ extended: true }));
 
 //Use routes from the controllers folder
 const controller = require('./controllers/controller');
-app.use('/wx', controller);
-const weather = require('./controllers/weather');
-app.use('/weather', weather);
+app.use('/api', controller);
+// const weather = require('./controllers/weather');
+// app.use('/weather', weather);
+
 
 //Database connection
 mongoose.connect(MONGOURI, {
@@ -37,3 +38,4 @@ mongoose.connection.once('open', () => {
 app.listen(PORT, () => {
     console.log('I can hear you on', PORT);
 })
+module.exports = app;

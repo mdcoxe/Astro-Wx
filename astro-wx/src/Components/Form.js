@@ -1,82 +1,67 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Button, Row, Col, ButtonGroup, ToggleButton } from 'react-bootstrap';
-import axios from 'axios';
-import { connect } from 'react-redux';
+import { useState, useRef } from 'react';
 import '../Stylesheets/form.css';
 
-const WxForm = (props) => {
-    const [zipCode, setZipCode] = useState(99504);
-    const [tempMetric, setTempMetric] = useState('imperial');
+const prod = 'http://';
+const dev = 'http://localhost:3009'
+const url = (process.env.NODE_ENV ==='development' ? dev : prod)
+// console.log(process.env.NODE_ENV)
 
-    
-
-    const handleChange = (e) => {
-        e.preventDefault();
-        setZipCode(e.target.value);
-    };
-
-    const handleTempChange = (e) => {
-        e.preventDefault();
-        setTempMetric(e.target.value);
-        
-    }
+const WxForm = () => {
+    const [weatherData, setWeatherData] = useState({})
+    const regZipCode = useRef(null);
+    const saveToMongo = async (event) => {
+        event.preventDefault();
+        const body = JSON.stringify({
+            zipCode: regZipCode.current.value
+        })
+        try {
+          const response = await fetch(`${url}/api/wxmongo`, {
+            method: 'POST',
+            headers: {
+              'Content-type': 'application/json'
+            },
+              body
+          })
+          const data = await response.json();
+          setWeatherData(data)
+          console.log(data);
+        } catch (error) {
+          console.error(400).json(error)
+        }
+      }
     
     return  <div className="wx-form">
+                <div className="zipCode">
+                    <form onSubmit= {saveToMongo}>
+                        <label>Zipcode:
+                            <input type="text" placeholder="Enter zip code" ref={regZipCode}/>
+                        </label>
 
-        {/* Previously called zipcodes, aka history listed below form as clickable links to recall saved data */}
-                <Form className="weather-form" >
-
-                    <Row type="flex" justify="center" align="center" className="zipCode">
-                        <Col>
-                            <span>Zip Code: </span>
-                            <Form.Control name="zipCode"
-                                        type="text"
-                                        placeholder="Enter your zip code"
-                                        onChange={handleChange}
-                                        className="zipCodeInput"/>
-                        </Col>
-                    </Row>
-
-                    <Row type="flex" justify="center" align="center">
-                        <Col span={4}>
-                            <ButtonGroup toggle>
-                                <ToggleButton
-                                    key={"C"}
-                                    type="radio"
-                                    variant="secondary"
-                                    name="tempMetric"
-                                    value={"metric"}
-                                    checked={tempMetric === "metric"}
-                                    onChange={handleTempChange}
-                                >
-                                    <span>Celsius (°C)</span>
-                                </ToggleButton>
-                                <ToggleButton
-                                    key={"F"}
-                                    type="radio"
-                                    variant="secondary"
-                                    name="tempMetric"
-                                    value={"imperial"}
-                                    checked={tempMetric === "imperial"}
-                                    onChange={handleTempChange}
-                                >
-                                    <span>Fahrenheit (°F)</span>
-                                </ToggleButton>
-                            </ButtonGroup>
-                        </Col>
-                    </Row>
-
-                    {/* <Row type="flex" justify="center" align="center">
-                        <Col span={4}>
-                            <Button className="save-btn" variant="primary" type="submit">
-                                Save
-                            </Button>
-                        </Col>
-                    </Row> */}
-
-                </Form>
-
-            </div>
+                        <input type="submit" value="Get Weather"/>
+                    </form>
+                </div>
+                <div className="local-wx">
+                    <h1 className="local-wx-title">Current Local Weather</h1>
+                    
+                    <h2 className="city-name">City: {weatherData.name}</h2>
+                    <div className="local-wx-container">
+                        <div className="wx-icon">
+                            <img src={weatherData.weather && `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}  alt="weather-icon"/>
+                        </div>
+                        <div className="current-wx">
+                            <span className="current-description">Current Conditions: {weatherData.weather && weatherData.weather[0].main}, {weatherData.weather && weatherData.weather[0].description}</span>
+                            <p><span className="curr-temp">Current Temp: {weatherData.main && weatherData.main.temp} °F</span></p>
+                            <p><span className="humidity">Humidity: {weatherData.main && weatherData.main.humidity}%</span></p>
+                            
+                            <span className="feels-like">Feels like: {weatherData.main && weatherData.main.feels_like}°F</span>
+                        </div>
+                        <div className="temps">
+                            <span className="min-temp">Today's Low: {weatherData.main && weatherData.main.temp_min}°F</span>
+                            <p><span className="max-temp">Today's High: {weatherData.main && weatherData.main.temp_max}°F</span></p>
+                        </div>
+                    </div>
+                </div>
+           </div>
 }
 
 export default WxForm;

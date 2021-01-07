@@ -1,13 +1,10 @@
-
 .header {
-    
     height: 125px;
     background-color: black;
     text-align: center;
     font-size: large;
     border-bottom: 2px solid black;
     box-shadow: 0px 10px 8px 10px black;
-   
     margin-bottom: 15px;
     width: 100%;
     z-index: 999;
@@ -17,8 +14,6 @@
     line-height: .1em;
     text-shadow: 1px 3px 6px #DF740D, 5px 5px 6px #8fe0ff;
 }
-
-
 .annotation{
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 15px;

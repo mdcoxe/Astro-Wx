@@ -1,4 +1,4 @@
-// import React, { useState, useEffect } from 'react';
+
 import '../Stylesheets/spaceweather.css';
 const SpaceWeather = () => {
     return  <div className="space-container">
@@ -8,7 +8,7 @@ const SpaceWeather = () => {
                
                 <div className="space-forecast">
                   <iframe src="https://services.swpc.noaa.gov/text/3-day-forecast.txt" 
-                    frameborder="10" 
+                    frameBorder="10" 
                     title="3 Day Space Weather Forecast"
                     width="400px"
                     max-width="500px"
@@ -18,9 +18,7 @@ const SpaceWeather = () => {
                   </iframe>
                 </div>
                 </div>
-                
                     <p>Space Weather data and images sourced from <a href="https://www.swpc.noaa.gov/content/data-access">NOAA Space Weather Prediction Center</a></p>
-                
             </div>
 }
 

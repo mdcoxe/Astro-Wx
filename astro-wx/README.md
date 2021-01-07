@@ -13,7 +13,7 @@ https://www.color-hex.com/color-palette/54458
 Tech used:
 
 MongoDb, Express, React, Node
-Axios, Mongoose, Bootstrap, Cors, DotENV
+Axios, Mongoose, Cors, DotENV
 
 Issues:
 API frontend vs backend

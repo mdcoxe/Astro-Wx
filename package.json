@@ -1,0 +1,32 @@
+{
+  "engines": {
+    "node": "15.0.1"
+  },
+  "name": "Astro-Wx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdcoxe/Astro-Wx.git"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.8"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdcoxe/Astro-Wx/issues"
+  },
+  "homepage": "https://github.com/mdcoxe/Astro-Wx#readme"
+}

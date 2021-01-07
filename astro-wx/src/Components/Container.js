@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../Stylesheets/container.css';
 import WxForm from './Form';
-import Panels from './Panels';
+import SpaceWeather from './SpaceWeather';
 
 
 const Container = (props) => {
@@ -9,7 +9,7 @@ const Container = (props) => {
 
     return  <div className="wx-container">
                 <WxForm />
-                <Panels weatherData={weatherData} />
+                <SpaceWeather />
             </div>
 }
 
