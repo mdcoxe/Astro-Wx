@@ -1,9 +1,9 @@
 .space-container{
     text-align: center;
-    border-top: 1px solid #2b235a;
-    border-bottom: 1px solid #2b235a;
-    background-color: #2b235a;
-
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    box-shadow: 0px -4px 8px 10px black;
+    background-color: black;
 }
 .swx-overview{
     display: flex;

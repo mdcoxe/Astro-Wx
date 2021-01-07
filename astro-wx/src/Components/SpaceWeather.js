@@ -2,7 +2,7 @@
 import '../Stylesheets/spaceweather.css';
 const SpaceWeather = () => {
     return  <div className="space-container">
-                <h2>Space Weather</h2>  
+                <h1>Space Weather</h1>  
                 <div className="swx-overview">
                   <img src="https://services.swpc.noaa.gov/images/swx-overview-small.gif" alt="Space Weather Overview"  />
                
@@ -18,9 +18,9 @@ const SpaceWeather = () => {
                   </iframe>
                 </div>
                 </div>
-                <h4>
+                
                     <p>Space Weather data and images sourced from <a href="https://www.swpc.noaa.gov/content/data-access">NOAA Space Weather Prediction Center</a></p>
-                </h4>
+                
             </div>
 }
 

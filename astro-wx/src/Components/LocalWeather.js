@@ -33,6 +33,7 @@ const LocalWeather = () => {
   
     return (
         <div className="local-wx">
+            <h1 className="local-wx-title">Current Local Weather</h1>
             <h2 className="city-name">City Name</h2>
 
             <div className="overcast">
