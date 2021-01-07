@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import '../Stylesheets/form.css';
 
-const prod = 'https://astro-wx.herokuapp.com/';
+const prod = 'https://astro-wx.herokuapp.com';
 const dev = 'http://localhost:3009'
 const url = (process.env.NODE_ENV ==='development' ? dev : prod)
 // console.log(process.env.NODE_ENV)
