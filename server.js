@@ -1,3 +1,3 @@
 const express = require('express');
-const app = require('./api/app');
+const app = require('./backend/app');
 app.use(express.static('build'));
